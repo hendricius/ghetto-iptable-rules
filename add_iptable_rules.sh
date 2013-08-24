@@ -23,6 +23,15 @@
 # /sbin/iptables -A OUTPUT -o tun0 -j ACCEPT
 # /sbin/iptables -A FORWARD -o tun0 -j ACCEPT
 
+
+# Default policies
 /sbin/iptables -P INPUT DROP
-/sbin/iptables -P FORWARD DROP
+
+# Except all when hosting virtual machines
+/sbin/iptables -P FORWARD ACCEPT
+/sbin/iptables -F FORWARD
+
+# Else you want to
+# /sbin/iptables -P FORWARD DROP
+
 /sbin/iptables -P OUTPUT ACCEPT
