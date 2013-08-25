@@ -24,6 +24,7 @@
 # /sbin/iptables -A FORWARD -o tun0 -j ACCEPT
 
 # Redirecting a local port to another IP:
+# /sbin/iptables -t nat -A POSTROUTING -j MASQUERADE
 # /sbin/iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 1.1.1.1:80
 
 
