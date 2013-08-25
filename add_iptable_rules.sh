@@ -23,9 +23,10 @@
 # /sbin/iptables -A OUTPUT -o tun0 -j ACCEPT
 # /sbin/iptables -A FORWARD -o tun0 -j ACCEPT
 
-# Redirecting a local port to another IP:
+# Redirecting a local port to a local openvz:
+# Replace 1.1.1.1 With the host IP. 2.2.2.2 with the openvz ip
+# /sbin/iptables -t nat -A PREROUTING -p tcp -d 1.1.1.1 --dport 80 -j DNAT --to-destination 2.2.2.2:80
 # /sbin/iptables -t nat -A POSTROUTING -j MASQUERADE
-# /sbin/iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 1.1.1.1:80
 
 
 # Default policies
