@@ -23,6 +23,9 @@
 # /sbin/iptables -A OUTPUT -o tun0 -j ACCEPT
 # /sbin/iptables -A FORWARD -o tun0 -j ACCEPT
 
+# Redirecting a local port to another IP:
+# /sbin/iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 1.1.1.1:80
+
 
 # Default policies
 /sbin/iptables -P INPUT DROP
